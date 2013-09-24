@@ -1,5 +1,15 @@
 class Player < ActiveRecord::Base
-  validates :name, uniqueness: { case_sensitive: false }
-  has_many :games, through :rounds
   has_many :rounds
+  has_many :games
+
+
+  def self.authenticate(username)
+    current_user = User.find_by_username(username)
+    if current_user.username == username
+      current_user
+    else
+      nil
+    end
+  end 
 end
+

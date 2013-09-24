@@ -16,8 +16,10 @@ post '/home' do
 end 
 
  post '/create_user' do
-  user = User.new
+  @current_player1 = Player.create(name: params[:username1])
+  @current_player2 = Player.create(name: params[:username2])
+  if @current_player1.save && @current_player2.save 
   erb :home 
- end 
+  end 
+end 
 
-# use .text 
