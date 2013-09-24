@@ -9,17 +9,28 @@ end
 
 
 post '/home' do 
-  # take login info from post 
-  # pull up user object 
-  # find or user create 
-  erb :home 
+  @player1= Player.find(name: params[:login1])
+  @player2= Player.find(name: params[:login2])
+  if @player1 && @player2 
+    @game = Game.new
+    @game.players << [@player1, @player2]
+    @game.save 
+    erb :home
+  else 
+    erb :index
+  end 
 end 
 
  post '/create_user' do
-  @current_player1 = Player.create(name: params[:username1])
-  @current_player2 = Player.create(name: params[:username2])
-  if @current_player1.save && @current_player2.save 
-  erb :home 
+  @player1 = Player.new(name: params[:username1])
+  @player2 = Player.new(name: params[:username2])
+  if @player1.save && @player2.save
+    @game = Game.new
+    @game.players << [@player1, @player2]
+    @game.save 
+    erb :home 
+  else
+      erb :index
   end 
 end 
 

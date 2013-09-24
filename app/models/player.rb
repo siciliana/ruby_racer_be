@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
   has_many :rounds
-  has_many :games
+  has_many :games, :through => :rounds
 
 
   def self.authenticate(username)

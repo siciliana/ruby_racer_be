@@ -4,22 +4,25 @@
 <script src="js/stuff.js"></script>
 
 
-<table class="racer_table">
-  <div class = "player 1">
+<table class="racer_table" data-game_id="<%= @game.id %>">
+  <div class = "player 1" data-player1_id="<%= @player1.name%>">
   <tr id="player1_strip">
+  
+  <td>Player 1: <%= @player1.name %></td>
     <td><img src="nelsol_dragon.jpg"></img></td>
+
     <td class="active" id="1">X</td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
     <td class="end1!">X</td>
+  </tr>
  </div>
 
-  <div class="player 2">
-
-
-  </tr>
+  <div class="player 2" data-player2_id="<%= @player2.name %>">
+  
+  <p>Player 2: <%= @player2.name %></p>
   <tr id="player2_strip">
     <td><img src="jake_dragon2.jpg" style:"height: 200px"></td>
     <td class="active">X</td>

@@ -1,5 +1,6 @@
 
-def current_player
-  @current_player ||= Player.find_by_id(session[:id])
-end
+# def current_players
+#   @current_player1 ||= Player.find_by_name(params[:username1]))
+#   @current_player2 ||= Player.find_by_name(params[:username2])
+# end
 
