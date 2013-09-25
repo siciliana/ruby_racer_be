@@ -45,8 +45,8 @@ post '/winner' do
   p params['player_id']
   if request.xhr?
     @player = Player.find(params['player_id'])
-    @winner_name = Game.create(winner: @player.name)
-    return @winner_name
+    @winner_name = Game.create(winner: "#{@player.name}")
+    puts @winner_name
   end
-  erb :winner
+"<h1>hey!!!!!1  #{@player.name} has won! </h1>"
 end
