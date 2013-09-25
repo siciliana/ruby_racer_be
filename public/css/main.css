@@ -1,3 +1,7 @@
+.container {
+  text-align: center;
+}
+
 .racer_table td {
   text-align: center;
   background-color: white;
@@ -17,4 +21,8 @@
 img {
   height: 200px;
   width: 200px;
+}
+
+td {
+  color: tomato;
 }

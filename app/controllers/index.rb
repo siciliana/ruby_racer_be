@@ -7,30 +7,46 @@ get '/create_user' do
   erb :create_user
 end 
 
+get '/winner' do
+  "Damn, that's a cold-ass honky!"
+  erb :_results
+end
 
-post '/home' do 
-  @player1= Player.find(name: params[:login1])
-  @player2= Player.find(name: params[:login2])
-  if @player1 && @player2 
-    @game = Game.new
-    @game.players << [@player1, @player2]
-    @game.save 
+post '/home' do
+  @player1= Player.find_or_create_by(name: params[:player1])
+  @player2= Player.find_or_create_by(name: params[:player2])
+  if @player1 == @player2
+    redirect to "/"
+  elsif @player1 && @player2 
+    # @game = Game.new
+    # @game.players << [@player1, @player2]
+    # @game.save 
     erb :home
   else 
-    erb :index
+    @errors = "Please enter a name"
+    redirect to "/#{@errors}"
   end 
 end 
 
  post '/create_user' do
-  @player1 = Player.new(name: params[:username1])
-  @player2 = Player.new(name: params[:username2])
+  @player1 = Player.new(name: params[:player1])
+  @player2 = Player.new(name: params[:player2])
   if @player1.save && @player2.save
-    @game = Game.new
-    @game.players << [@player1, @player2]
+    # @game = Game.new
+    # @game.players << [@player1, @player2]
     @game.save 
     erb :home 
   else
-      erb :index
+    erb :index
   end 
 end 
 
+post '/winner' do
+  p params['player_id']
+  if request.xhr?
+    @player = Player.find(params['player_id'])
+    @winner_name = Game.create(winner: @player.name)
+    return @winner_name
+  end
+  erb :winner
+end

@@ -4,36 +4,37 @@
 <script src="js/stuff.js"></script>
 
 
-<table class="racer_table" data-game_id="<%= @game.id %>">
-  <div class = "player 1" data-player1_id="<%= @player1.name%>">
-  <tr id="player1_strip">
+<div class="container">
+  <table class="racer_table">
   
-  <td>Player 1: <%= @player1.name %></td>
-    <td><img src="nelsol_dragon.jpg"></img></td>
-
-    <td class="active" id="1">X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td class="end1!">X</td>
+  <tr id="player1_strip" data-player-id="<%=@player1.id%>">
+    
+    <td><img src="nelsol_dragon.jpg" style="height: 200px"></td>
+    <td class="active" id="1"><%= @player1.name %></td>
+    <td><%= @player1.name %></td>
+    <td><%= @player1.name %></td>
+    <td><%= @player1.name %></td>
+    <td><%= @player1.name %></td>
+    <td class="end1!"><%= @player1.name %></td>
   </tr>
- </div>
-
-  <div class="player 2" data-player2_id="<%= @player2.name %>">
   
-  <p>Player 2: <%= @player2.name %></p>
-  <tr id="player2_strip">
-    <td><img src="jake_dragon2.jpg" style:"height: 200px"></td>
-    <td class="active">X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-    <td>X</td>
-
-
-    <td class="end2!">X</td>
-  </div>
+  <tr id="player2_strip" data-player-id="<%=@player2.id%>">
+    
+    <td><img src="jake_dragon2.jpg" sty="height: 200px"></td>
+    <td class="active"><%= @player2.name %></td>
+    <td><%= @player2.name %></td>
+    <td><%= @player2.name %></td>
+    <td><%= @player2.name %></td>
+    <td><%= @player2.name %></td>
+    <td class="end2!"><%= @player2.name %></td>
   </tr>
 </table>
+
+<h1>LOOK AT THEM.</h1>
+<h3>(they're bootiful!) :D</h3>
+<form id="winner_form" method="post" action="/winner">
+  <input id="winner" type="hidden" data-winner-id="winner goes here">
+  <input type="submit" value="submit">
+</form>
+</div>
 
